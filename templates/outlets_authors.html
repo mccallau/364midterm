@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+{% if outletlen >0 %}
+	<h1>Here are the news outlets and authors with headlines in the database:</h1>
+{% else %}
+	<h2><i>No results to query from in database, go <a href="{{ url_for('pull')}}">here</a> to pull results to enter into the database!</i></h2>
+{% endif %}
+
+{% for outlet in outlets %}
+	<i><h2>{{ outlet[0] }}</h2></i>
+	{% for authors in outlet[1] %}
+		<li>{{ authors }}</li>
+	{% endfor %}
+{% endfor %}
+
+
+{% endblock %}

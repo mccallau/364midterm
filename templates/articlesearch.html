@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+
+{% if entries %}
+<form action="{{ url_for('search') }}" method="POST">
+    <h1>Search through collected news articles here!</h1>
+    {{ form.string.label() }}  {{ form.string() }}
+    <br><br>
+    Select any outlets from the following (or leave blank to return all authors):
+    {{ form.outlets.label() }}  {{ form.outlets }}<br>
+
+    Select any authors from the following (or leave blank to return all authors):
+    {{ form.authors.label() }}  {{ form.authors }}<br>
+
+    Enter a date (YYYY-MM-DD) range (or leave either blank to return any dated headline):<br>
+    From: {{ form.datefrom.label() }}  {{ form.datefrom }}  To: {{ form.dateto.label() }}  {{ form.dateto }}
+    <br>
+    <br>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+<br><br>
+{% else %}
+<h2><i>No results to query from in database, go <a href="{{ url_for('pull')}}">here</a> to pull results to enter into the database!</i></h2>
+{% endif %}
+
+
+
+{% if results != 'none' and results %}
+<h2>Here are the headlines found with your search terms:</h2>
+{% for result in results %}
+    <h3><i>On {{ result[1] }} at {{ result[2] }} from {{ result[4] }}</i></h3>
+    <h4><i>by {{ result[3] }}</i></h4>
+    {{ result[0] }}
+    <br><br>
+    {% endfor %}
+
+{% elif results != 'none' and not results %}
+<h2>No results, revise your search terms.</h2>
+{% endif %}
+
+
+{% endblock %}

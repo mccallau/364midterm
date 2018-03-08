@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+
+{% if headlines == 'Error, something went wrong' %}
+	<h1>API encountered an error, maybe the key is invalid or not connected properly?</h1>
+{% elif headlinelen > 1 %}
+	<h1>Headline Results:</h1>
+{% elif headlinelen == 1 %}
+	<h1>Headline Result:</h1>
+{% else %}
+	<h1>Nothing found, go back and try again!</h1>
+{% endif %}
+
+{% if headlines != 'Error, something went wrong' %}
+{% for headline in headlines %}
+<i><h2>On {{ headline.date.date() }} at {{ headline.date.time() }} UTC: </h2></i> {{ headline.title }}<br><br>
+{% endfor %}
+
+
+<br><br>
+
+{% if headlinelen > 0 %}
+	<i>If any new headline(s), they were added to the database!</i>
+{% endif %}
+{% endif %}
+
+
+{% endblock %}

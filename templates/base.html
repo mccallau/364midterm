@@ -1,0 +1,30 @@
+<h3>Navigation</h3>
+<ul>
+    <li><a href="{{ url_for('pull')}}">Home</a></li>
+    <li><a href="{{ url_for('search')}}">Search through already retrieved article headlines by advanced terms.</a></li>
+    <li><a href="{{ url_for('outletsauthors')}}">See all news outlets and their respective authors from pulled headlines.</a></li>
+
+
+</ul>
+<p>---------------------------------------------------------</p>
+
+<div>
+{% for messages in get_flashed_messages() %}
+{% for message in messages %}
+<li>ERROR: {{ message }}</li>
+{% endfor %}
+{% endfor %}<br>
+</div>
+
+{% block content1 %}
+
+
+
+{% endblock %}
+
+<br><br>
+----------------------------------------------------------<br>
+Disclaimer:<i><br>All results are pulled as live data and manipulated but not formatted, some results may appear skewed due to how the live data exists from where it is pulled from.<br>Results from News API at newsAPI.org.
+</i>
+
+

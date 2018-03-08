@@ -1,0 +1,1 @@
+apikey = '' ## Signed-up for at newsAPI.org
