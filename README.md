@@ -11,7 +11,7 @@
 - **At least one request to a REST API that is based on data submitted in a WTForm.**
 - **At least one additional (not provided) WTForm that sends data with a `GET` request to a new page.**
 - **At least one additional (not provided) WTForm that sends data with a `POST` request to the same page.**
-- **At least one custom validator for a field in a WTForm.**
+- **At least one custom validator for a field in a WTForm.** (Completed by modifying the validate function because the type of validation I wanted was not available through the traditional method of validation)
 - **At least 2 additional model classes.**
 - **Have a one:many relationship that works properly built between 2 of your models.**
 - **Successfully save data to each table.**
@@ -25,11 +25,11 @@
 
 ## Webpage View Function to Template Rendering
 
- - http://localhost:5000/ -> articlepull.html
- - http://localhost:5000/pull_results -> articleresults.html
- - http://localhost:5000/search -> articlesearch.html
- - http://localhost:5000/outlets_authors -> outlets_authors.html
- - 404 error -> 404.html
+ - `http://localhost:5000/` -> `articlepull.html`
+ - `http://localhost:5000/pull_results` -> `articleresults.html`
+ - `http://localhost:5000/search` -> `articlesearch.html`
+ - `http://localhost:5000/outlets_authors` -> `outlets_authors.html`
+ - `404 error` -> `404.html`
 
 ## App Description
 

@@ -174,7 +174,7 @@ def results():
     if form.validate():   
         term = request.args['term']
         url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}&q={}'.format(apikey,term)
-        headlines = json.loads((requests.get(url)).text)
+        headlines = json.loads((requests.get(url)).text) ## Only gets first 20 results if more than 20 results
         if headlines['status'] != 'ok':
             headlines = 'Error, something went wrong'
         else:
@@ -212,9 +212,9 @@ def search():
         for headline in Headlines.query.all():
             if string and string.lower() not in headline.title.lower():
                 continue
-            if outlets and len([True for outlet in outlets if (int(outlet[0]) == headline.outlet_id)]) == 0:
+            if outlets and len([True for outlet in outlets if (int(outlet) == headline.outlet_id)]) == 0:
                 continue
-            if outlets and len([True for author in authors if (int(author[0]) == headline.author_id)]) == 0:
+            if authors and len([True for author in authors if (int(author) == headline.author_id)]) == 0:
                 continue
             if datefrom and not headline.date.date()>=datefrom:
                 continue
